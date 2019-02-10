@@ -1,0 +1,9 @@
+<resources>
+	<string name="app_name">The Image</string>
+	<string name="email">Email</string>
+	<string name="password">Password</string>
+	<string name="login">Login</string>
+	
+	<string name="access_key">9b24c410a3deb684484ea1b0abaff4d445f10c5367057e669f86d4fdc5cab88f</string>
+	<string name="secret_key">9ff9edcf553717c7d9e6380770c8b33a14d91cc600a35444b78c348f256168c0</string>
+</resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data></data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="5dp">
+		
+		
+		<ImageView
+			android:id="@+id/imageView2"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="8dp"
+			android:src="@color/colorBlack"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="24dp"
+			android:layout_marginEnd="8dp"
+			android:text="User name"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toEndOf="@+id/imageView2"
+			app:layout_constraintTop_toTopOf="parent" />
+		
+		<ImageView
+			android:id="@+id/imageView3"
+			android:layout_width="match_parent"
+			android:layout_height="250dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="12dp"
+			android:layout_marginEnd="8dp"
+			android:scaleType="centerCrop"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+		
+		<LinearLayout
+			android:layout_width="@dimen/action_button_width"
+			android:layout_height="@dimen/action_button_height"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="20dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginBottom="8dp"
+			android:background="@drawable/button_outline"
+			android:gravity="center"
+			android:orientation="horizontal"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/button2"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/imageView3">
+			
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_favorite" />
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="15"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+		
+		</LinearLayout>
+		
+		<ImageView
+			android:id="@+id/button2"
+			android:layout_width="@dimen/action_button_width"
+			android:layout_height="@dimen/action_button_height"
+			android:layout_marginTop="20dp"
+			android:layout_marginBottom="8dp"
+			android:background="@drawable/button_outline"
+			android:scaleType="centerInside"
+			android:src="@drawable/ic_add"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/imageView3"
+			tools:layout_editor_absoluteX="112dp" />
+		
+		<ImageView
+			android:layout_width="@dimen/action_button_width"
+			android:layout_height="@dimen/action_button_height"
+			android:layout_marginStart="92dp"
+			android:layout_marginTop="20dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginBottom="8dp"
+			android:background="@drawable/button_outline"
+			android:scaleType="centerInside"
+			android:src="@drawable/ic_arrow_downward"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/button2"
+			app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
