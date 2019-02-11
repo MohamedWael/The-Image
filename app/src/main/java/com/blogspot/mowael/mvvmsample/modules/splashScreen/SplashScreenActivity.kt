@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.blogspot.mowael.mvvmsample.R
-import com.blogspot.mowael.mvvmsample.modules.login.LoginActivity
+import com.blogspot.mowael.mvvmsample.modules.home.HomeActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -16,7 +16,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun startNextActivity() {
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 }

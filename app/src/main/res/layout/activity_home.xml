@@ -5,5 +5,11 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".modules.home.HomeActivity">
-
+	
+	<com.blogspot.mowael.mvvmsample.modules.home.widgets.ImagePostView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="8dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		tools:layout_editor_absoluteX="528dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

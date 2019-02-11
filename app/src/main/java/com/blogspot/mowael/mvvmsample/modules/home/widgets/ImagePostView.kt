@@ -2,7 +2,9 @@ package com.blogspot.mowael.mvvmsample.modules.home.widgets
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.LinearLayout
+import com.blogspot.mowael.mvvmsample.databinding.ViewImagePostBinding
 
 class ImagePostView : LinearLayout {
 
@@ -24,7 +26,6 @@ class ImagePostView : LinearLayout {
 
 
     private fun initView() {
-
-
+        ViewImagePostBinding.inflate(LayoutInflater.from(context), this, true)
     }
 }
