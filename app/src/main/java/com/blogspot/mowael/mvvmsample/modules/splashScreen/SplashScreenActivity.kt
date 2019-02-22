@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.blogspot.mowael.mvvmsample.R
-import com.blogspot.mowael.mvvmsample.modules.home.HomeActivity
+import com.blogspot.mowael.mvvmsample.modules.home.view.HomeActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

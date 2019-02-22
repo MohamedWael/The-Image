@@ -1,4 +1,4 @@
-package com.blogspot.mowael.mvvmsample.modules.home
+package com.blogspot.mowael.mvvmsample.modules.home.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
