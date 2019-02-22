@@ -7,6 +7,8 @@ object EndPoint {
     val BASE_URL = "https://" + UNSPLASH
     val API_URL = "https://api." + UNSPLASH
 
+    const val PHOTOS= "photos"
+
 
     fun createAuthUrl(clientID: String): String {
         val AUTHORIZE = BASE_URL + "oauth/authorize"

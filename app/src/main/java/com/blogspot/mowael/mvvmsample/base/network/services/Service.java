@@ -5,8 +5,12 @@ import com.blogspot.mowael.mvvmsample.base.network.RetrofitBase;
 import com.blogspot.mowael.mvvmsample.base.utils.Logger;
 import com.google.gson.Gson;
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.Single;
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -25,6 +29,7 @@ public class Service<Response, RestClient> implements Callback<Response> {
 
     protected static final String MULTI_PART_FORM_DATA = "multipart/form-data";
     private Callback<Response> callback;
+    private String TAG = Service.class.getName();
 
     /**
      * @param bodyMap body of the request
@@ -63,11 +68,24 @@ public class Service<Response, RestClient> implements Callback<Response> {
         return RetrofitBase.getInstance().createClient(tClass);
     }
 
-    public void sendAsync(Observable<Response> observable) {
+    public Disposable sendAsync(Observable<Response> observable, Consumer<Response> responseConsumer, Consumer<Throwable> errorConsumer) {
+        return appendSchedulers(observable).subscribe(responseConsumer, errorConsumer);
+    }
+
+    public void sendAsync(Observable<Response> observable, Observer<Response> observer) {
+        appendSchedulers(observable).subscribe(observer);
+    }
+
+    public void sendAsync(Single<Response> observable, SingleObserver<Response> observer) {
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(observer);
     }
+
+    public Observable<Response> appendSchedulers(Observable<Response> observable) {
+        return observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
 
     public void sendAsync(Call<Response> call, Callback<Response> callback) {
         this.callback = callback;
@@ -78,21 +96,21 @@ public class Service<Response, RestClient> implements Callback<Response> {
 
     @Override
     public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-        Logger.d("onResponse", response.toString());
-        Logger.d("onResponseMessage", response.message());
-        Logger.d("onResponseCode", response.code() + "");
-        Logger.d("onResponseErrorBody", response.errorBody() != null ? response.errorBody().toString() : "no Error");
+        Logger.d(TAG + " onResponse", response.toString());
+        Logger.d(TAG + " onResponseMessage", response.message());
+        Logger.d(TAG + " onResponseCode", response.code() + "");
+        Logger.d(TAG + " onResponseErrorBody", response.errorBody() != null ? response.errorBody().toString() : "no Error");
         if (response.body() != null) {
             Gson gson = new Gson();
             String res = gson.toJson(response.body());
-            Logger.d("response", res);
-        } else Logger.d("response", "null body");
+            Logger.d(TAG + " response", res);
+        } else Logger.d(TAG + " response", "null body");
         if (callback != null) callback.onResponse(call, response);
     }
 
     @Override
     public void onFailure(Call<Response> call, Throwable t) {
-        Logger.e("onFailureMSG", t.getMessage());
+        Logger.e(TAG + " onFailureMSG", t.getMessage());
         if (callback != null) callback.onFailure(call, t);
         t.printStackTrace();
     }
