@@ -12,10 +12,10 @@ open class TheImageService<Response> : Service<Response, RestClient>() {
         return createRestClient(RestClient::class.java)
     }
 
-    fun execute(observable: Observable<Response>, responseCallback: ResponseHandler<Response>): Disposable? {
+    fun execute(observable: Observable<Response>, responseHandler: ResponseHandler<Response>): Disposable? {
         return sendAsync(
             observable,
-            { responseCallback.onSuccess(it) },
-            { responseCallback.onError(TheImageNetworkErrorHandler(it)) })
+            { responseHandler.onSuccess(it) },
+            { responseHandler.onError(TheImageNetworkErrorHandler(it)) })
     }
 }

@@ -274,6 +274,10 @@ public class RetrofitBase {
         return retrofit;
     }
 
+    public OkHttpClient.Builder getHttpClient() {
+        return httpClient;
+    }
+
     public <T> T createClient(Class<T> tClass) {
         return retrofit.create(tClass);
     }
